@@ -8,13 +8,13 @@ services:
     hostname: 'whatsapp-hard-api-node'
     network_mode: bridge
     image: whatsapp-hard-api-node:${TAG:-1.0.0}
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile.backend
       args:
         PORT: ${PORT:-3333}
         AUTO_UPDATE: true
-    restart: always
+    env_file: .env
     ports:
       - ${PORT:-3333}:${PORT:-3333}
-    env_file: .env
