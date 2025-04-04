@@ -1,0 +1,12 @@
+FROM node:latest
+
+WORKDIR /
+
+RUN git config --global credential.helper store && \
+    git clone https://github.com/renatoiub/whatsapp-hard-api-node.git && \
+    cd whatsapp-hard-api-node && \
+    npm install
+
+EXPOSE 3333/tcp
+
+CMD [ "node", "--trace-warnings", "whatsapp-hard-api-node/src/server.js" ]

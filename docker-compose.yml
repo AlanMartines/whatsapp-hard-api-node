@@ -1,0 +1,17 @@
+# Criar um contêiner
+# docker compose -f docker-compose.yml up --build -d
+
+services:
+
+  whatsapp-hard-api-node:
+    container_name: 'whatsapp-hard-api-node'
+    hostname: 'whatsapp-hard-api-node'
+    network_mode: bridge
+    image: whatsapp-hard-api-node:${TAG:-1.0.0}
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: always
+    ports:
+      - ${PORT:-3333}:${PORT:-3333}
+    env_file: .env
