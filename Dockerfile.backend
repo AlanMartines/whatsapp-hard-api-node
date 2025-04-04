@@ -41,4 +41,6 @@ RUN git config --global credential.helper store && \
 
 EXPOSE ${PORT}/tcp
 
-CMD [ "node", "--trace-warnings", "whatsapp-hard-api-node/src/server.js" ]
+RUN cd whatsapp-hard-api-node
+
+CMD [ "node", "--trace-warnings", "npm start" ]
