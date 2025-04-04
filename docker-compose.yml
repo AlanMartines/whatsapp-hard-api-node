@@ -11,6 +11,21 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
+      args:
+        TOKEN: ${TOKEN}
+        PROTECT_ROUTES: ${PROTECT_ROUTES}
+        ADMINTOKEN: ${ADMINTOKEN}
+        MAX_INSTANCES: ${MAX_INSTANCES}
+        USER: ${USER}
+        PASSWORD: ${PASSWORD}
+        NODE_ENV: ${NODE_ENV}
+        SESSION_SECRET: ${SESSION_SECRET}
+        COOKIE_SECRET: ${COOKIE_SECRET}
+        APP_URL: ${APP_URL}
+        LOG_LEVEL: ${LOG_LEVEL}
+        REASON_URL: ${REASON_URL}
+        TAG: ${TAG}
+        PORT: ${PORT:-3333}
     restart: always
     ports:
       - ${PORT:-3333}:${PORT:-3333}

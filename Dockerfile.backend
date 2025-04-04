@@ -1,12 +1,45 @@
 FROM node:latest
 
+# Declare as variáveis que serão passadas no momento da construção
+ARG TOKEN
+ARG PROTECT_ROUTES
+ARG ADMINTOKEN
+ARG MAX_INSTANCES
+ARG USER
+ARG PASSWORD
+ARG NODE_ENV
+ARG SESSION_SECRET
+ARG COOKIE_SECRET
+ARG APP_URL
+ARG LOG_LEVEL
+ARG REASON_URL
+ARG TAG
+
 WORKDIR /
+
+# Definindo variáveis de ambiente a partir dos ARGs
+ENV TOKEN=${TOKEN}
+ENV PROTECT_ROUTES=${PROTECT_ROUTES}
+ENV ADMINTOKEN=${ADMINTOKEN}
+ENV MAX_INSTANCES=${MAX_INSTANCES}
+ENV USER=${USER}
+ENV PASSWORD=${PASSWORD}
+ENV NODE_ENV=${NODE_ENV}
+ENV SESSION_SECRET=${SESSION_SECRET}
+ENV COOKIE_SECRET=${COOKIE_SECRET}
+ENV APP_URL=${APP_URL}
+ENV LOG_LEVEL=${LOG_LEVEL}
+ENV REASON_URL=${REASON_URL}
+ENV TAG=${TAG}
+ENV PORT=${PORT}
 
 RUN git config --global credential.helper store && \
     git clone https://github.com/renatoiub/whatsapp-hard-api-node.git && \
     cd whatsapp-hard-api-node && \
     npm install
 
-EXPOSE 3333/tcp
+EXPOSE ${PORT}/tcp
 
-CMD [ "node", "--trace-warnings", "whatsapp-hard-api-node/src/server.js" ]
+RUN cd whatsapp-hard-api-node
+
+CMD [ "node", "--trace-warnings", "src/server.js" ]
