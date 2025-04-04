@@ -43,4 +43,4 @@ EXPOSE ${PORT}/tcp
 
 RUN cd whatsapp-hard-api-node
 
-CMD [ "node", "--trace-warnings", "npm start" ]
+CMD [ "node", "--trace-warnings", "src/server.js" ]
