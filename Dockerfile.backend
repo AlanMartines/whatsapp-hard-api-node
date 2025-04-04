@@ -42,6 +42,5 @@ RUN git config --global credential.helper store && \
 EXPOSE ${PORT}/tcp
 
 CMD cd /whatsapp-hard-api-node/ && \
-if [ "$AUTO_UPDATE" = true ]; then git pull ; fi && \
-     npm start
-
+then git pull ; fi && \
+npm start
