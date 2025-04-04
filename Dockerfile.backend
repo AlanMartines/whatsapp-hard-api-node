@@ -14,6 +14,7 @@ ARG APP_URL
 ARG LOG_LEVEL
 ARG REASON_URL
 ARG TAG
+ARG PORT
 
 WORKDIR /
 
@@ -40,6 +41,4 @@ RUN git config --global credential.helper store && \
 
 EXPOSE ${PORT}/tcp
 
-RUN cd whatsapp-hard-api-node
-
-CMD [ "node", "--trace-warnings", "src/server.js" ]
+CMD [ "node", "--trace-warnings", "whatsapp-hard-api-node/src/server.js" ]
